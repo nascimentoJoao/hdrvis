@@ -83,10 +83,13 @@
 	<string.h>
 	<ctype.h>
 
-1475872204 source:/home/nascimentojoao/Documentos/softwarebasico/visualizadorhdr/hdrvis/opengl.c
+1542149332 source:/home/nascimentojoao/Documentos/softwarebasico/hdrvis/main.c
+	<math.h>
+	<string.h>
 	"opengl.h"
+	"rgbe.h"
 
-1475872167 /home/nascimentojoao/Documentos/softwarebasico/visualizadorhdr/hdrvis/opengl.h
+1475872167 /home/nascimentojoao/Documentos/softwarebasico/hdrvis/opengl.h
 	<windows.h>
 	"gl/glut.h"
 	<GLUT/glut.h>
@@ -94,27 +97,30 @@
 	<stdio.h>
 	<stdlib.h>
 
-1300995668 /home/nascimentojoao/Documentos/softwarebasico/visualizadorhdr/hdrvis/include/GL/glut.h
+1300995668 /home/nascimentojoao/Documentos/softwarebasico/hdrvis/include/GL/glut.h
 	"freeglut.h"
 
-1300995668 /home/nascimentojoao/Documentos/softwarebasico/visualizadorhdr/hdrvis/include/GL/freeglut.h
+1300995668 /home/nascimentojoao/Documentos/softwarebasico/hdrvis/include/GL/freeglut.h
 	"freeglut_std.h"
 	"freeglut_ext.h"
 
-1300995668 /home/nascimentojoao/Documentos/softwarebasico/visualizadorhdr/hdrvis/include/GL/freeglut_std.h
+1300995668 /home/nascimentojoao/Documentos/softwarebasico/hdrvis/include/GL/freeglut_std.h
 	<windows.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
-1300995668 /home/nascimentojoao/Documentos/softwarebasico/visualizadorhdr/hdrvis/include/GL/freeglut_ext.h
+1300995668 /home/nascimentojoao/Documentos/softwarebasico/hdrvis/include/GL/freeglut_ext.h
 
-1475628294 source:/home/nascimentojoao/Documentos/softwarebasico/visualizadorhdr/hdrvis/rgbe.c
+1472593460 /home/nascimentojoao/Documentos/softwarebasico/hdrvis/rgbe.h
+	<stdio.h>
+
+1542149766 source:/home/nascimentojoao/Documentos/softwarebasico/hdrvis/opengl.c
+	"opengl.h"
+
+1475628294 source:/home/nascimentojoao/Documentos/softwarebasico/hdrvis/rgbe.c
 	"rgbe.h"
 	<math.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
-
-1472593460 /home/nascimentojoao/Documentos/softwarebasico/visualizadorhdr/hdrvis/rgbe.h
-	<stdio.h>
 
