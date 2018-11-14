@@ -167,12 +167,12 @@ void arrow_keys(int a_keys, int x, int y)
     switch(a_keys)
     {
     case GLUT_KEY_RIGHT:
-        exposure += OFFSET * 100.0;
+        exposure += OFFSET;
         process();
         glutPostRedisplay();
         break;
     case GLUT_KEY_LEFT:
-        exposure -= OFFSET * 100.0;
+        exposure -= OFFSET;
         if(exposure < 0.05)
             exposure = 0.05;
         process();

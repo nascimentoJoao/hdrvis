@@ -42,54 +42,74 @@ int min(int a, int b);
 // quando for necessário (ex: algoritmos de tone mapping, etc)
 void process()
 {
-    printf("Exposure: %.3f\n", exposure);
     //
     //
     // SUBSTITUA este código pelos algoritmos a serem implementados
     //
+    modo = 1;
+    switch(modo) {
+        case GAMMA:
+            gammaCorrection();
+            break;
 
-    int position;
-    for(position=0; position<sizeX*sizeY; position++) {
+        case SCALE:
+            toneMapping();
+            break;
 
-        image8[position].r = (unsigned char) (image[position].r * exposure);
-        image8[position].g = (unsigned char) (image[position].g * exposure);
-        image8[position].b = (unsigned char) (image[position].b * exposure);
+        default:
+            applyExposure();
+            break;
     }
+    convertImage();
     //
     // NÃO ALTERAR A PARTIR DAQUI!!!!
     //
     buildTex();
 }
 
+void applyExposure() {
+printf("Applying exposure: %.3f \n", exposure);
+    for(int position = 0; position < (sizeX * sizeY); position++) {
+        image[position].r = (image[position].r * exposure);
+        printf("%f", image[position].r);
+        image[position].g = (image[position].g * exposure);
+        printf("%f", image[position].g);
+        image[position].b = (image[position].b * exposure);
+        printf("%f", image[position].b);
+    }
+}
+
 void toneMapping(){
+printf("Applying tone mapping! \n");
     int position;
     for(position = 0; position < sizeX * sizeY; position++){
-        image8[position].r = (unsigned char) ((image[position].r) / ((image[position].r) + exposure));
-        image8[position].g = (unsigned char) ((image[position].g) / ((image[position].g) + exposure));
-        image8[position].b = (unsigned char) ((image[position].b) / ((image[position].b) + exposure));
+        image[position].r =  ((image[position].r) / (image[position].r + tone_value));
+        image[position].g =  ((image[position].g) / (image[position].g + tone_value));
+        image[position].b =  ((image[position].b) / (image[position].b + tone_value));
+    }
+}
+
+
+void gammaCorrection(){
+    printf("Applying Gamma correction!\n");
+    int position;
+    for(position = 0; position < sizeX * sizeY; position++){
+        image[position].r = (fastpow(image[position].r, gamma_value));
+        image[position].g = (fastpow(image[position].g, gamma_value));
+        image[position].b = (fastpow(image[position].b, gamma_value));
     }
 }
 
 int min( int a, int b )
-{ return a < b ? a : b;
-}
+{ return (a) < (b) ? (a) : (b); }
 
 void convertImage(){
-     int position;
-    for(position = 0; position < sizeX * sizeY; position++){
-        image8[position].r = (unsigned char) ((min(1.0, image[position].r)) * 255);
-        image8[position].g = (unsigned char) ((min(1.0, image[position].g)) * 255);
-        image8[position].b = (unsigned char) ((min(1.0, image[position].b)) * 255);
-    }
-}
-
-void gammaCorrection(){
-    printf("entrou em gamma correction\n");
+printf("%d", modo);
     int position;
     for(position = 0; position < sizeX * sizeY; position++){
-        image8[position].r = (unsigned char) (fastpow(image8[position].r, gamma_value));
-        image8[position].g = (unsigned char) (fastpow(image8[position].g, gamma_value));
-        image8[position].b = (unsigned char) (fastpow(image8[position].b, gamma_value));
+        image8[position].r = (int) ((min(1.0, image[position].r)) * 255);
+        image8[position].g = (int) ((min(1.0, image[position].g)) * 255);
+        image8[position].b = (int) ((min(1.0, image[position].b)) * 255);
     }
 }
 

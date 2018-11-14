@@ -83,7 +83,7 @@
 	<string.h>
 	<ctype.h>
 
-1542149332 source:/home/nascimentojoao/Documentos/softwarebasico/hdrvis/main.c
+1542234706 source:/home/nascimentojoao/Documentos/softwarebasico/hdrvis/main.c
 	<math.h>
 	<string.h>
 	"opengl.h"
@@ -114,7 +114,7 @@
 1472593460 /home/nascimentojoao/Documentos/softwarebasico/hdrvis/rgbe.h
 	<stdio.h>
 
-1542149766 source:/home/nascimentojoao/Documentos/softwarebasico/hdrvis/opengl.c
+1542233737 source:/home/nascimentojoao/Documentos/softwarebasico/hdrvis/opengl.c
 	"opengl.h"
 
 1475628294 source:/home/nascimentojoao/Documentos/softwarebasico/hdrvis/rgbe.c
