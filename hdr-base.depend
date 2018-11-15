@@ -124,3 +124,44 @@
 	<string.h>
 	<ctype.h>
 
+1542239903 source:/home/13202108/Desktop/hdrvis/main.c
+	<math.h>
+	<string.h>
+	"opengl.h"
+	"rgbe.h"
+
+1542235887 /home/13202108/Desktop/hdrvis/opengl.h
+	<windows.h>
+	"gl/glut.h"
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdio.h>
+	<stdlib.h>
+
+1542235887 /home/13202108/Desktop/hdrvis/include/GL/glut.h
+	"freeglut.h"
+
+1542235887 /home/13202108/Desktop/hdrvis/include/GL/freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1542235887 /home/13202108/Desktop/hdrvis/include/GL/freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1542235887 /home/13202108/Desktop/hdrvis/include/GL/freeglut_ext.h
+
+1542235887 /home/13202108/Desktop/hdrvis/rgbe.h
+	<stdio.h>
+
+1542235887 source:/home/13202108/Desktop/hdrvis/opengl.c
+	"opengl.h"
+
+1542235887 source:/home/13202108/Desktop/hdrvis/rgbe.c
+	"rgbe.h"
+	<math.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+

@@ -139,13 +139,13 @@ void keyboard( unsigned char key, int x, int y )
     case 't':
       printf("Tone mapping\n");
       modo = SCALE;
-      gammaCorrection();
+      process();
       glutPostRedisplay();
       break;
     case 'g':
       printf("Gamma correction\n");
       modo = GAMMA;
-      gammaCorrection();
+      process();
       glutPostRedisplay();
       break;
   }
@@ -167,12 +167,12 @@ void arrow_keys(int a_keys, int x, int y)
     switch(a_keys)
     {
     case GLUT_KEY_RIGHT:
-        exposure += OFFSET;
+        exposure += OFFSET*100;
         process();
         glutPostRedisplay();
         break;
     case GLUT_KEY_LEFT:
-        exposure -= OFFSET;
+        exposure -= OFFSET*100;
         if(exposure < 0.05)
             exposure = 0.05;
         process();

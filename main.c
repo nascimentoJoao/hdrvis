@@ -35,82 +35,81 @@ float fastpow(float a, float b) {
 
 void toneMapping();
 void gammaCorrection();
-void correctImage();
 int min(int a, int b);
 
 // Função principal de processamento: ela deve chamar outras funções
 // quando for necessário (ex: algoritmos de tone mapping, etc)
 void process()
 {
+    printf("Exposure: %.3f\n", exposure);
+    float red, green, blue;
     //
     //
     // SUBSTITUA este código pelos algoritmos a serem implementados
     //
-    modo = 1;
-    switch(modo) {
-        case GAMMA:
-            gammaCorrection();
-            break;
+    for(int index = 0; index < (sizeX * sizeY); index++) {
+        red = (image[index].r * exposure);
+        green = (image[index].g * exposure);
+        blue = (image[index].b * exposure);
 
-        case SCALE:
-            toneMapping();
-            break;
+        float filterRed;
+        float filterGreen;
+        float filterBlue;
 
-        default:
-            applyExposure();
-            break;
+        if(modo == SCALE) {
+            filterRed = red / (red + tone_value);
+            filterGreen = green / (green + tone_value);
+            filterBlue = blue / (blue + tone_value);
+        } else {
+            filterRed = fastpow(red, (1 / gamma_value));
+            filterGreen = fastpow(green, (1 / gamma_value));
+            filterBlue = fastpow(blue, (1 / gamma_value));
+        }
+
+        int R8 = (int)(min(1.0,filterRed)* 255);
+        int G8 = (int) (min(1.0,filterGreen)* 255);
+        int B8 = (int)(min(1.0,filterBlue)* 255);
+
+        image8[index].r = R8;
+        image8[index].g = G8;
+        image8[index].b = B8;
     }
-    convertImage();
+    printf("RED: %f - GREEN: %f - BLUE: %f\n", red, green, blue);
     //
     // NÃO ALTERAR A PARTIR DAQUI!!!!
     //
     buildTex();
 }
 
-void applyExposure() {
-printf("Applying exposure: %.3f \n", exposure);
-    for(int position = 0; position < (sizeX * sizeY); position++) {
-        image[position].r = (image[position].r * exposure);
-        printf("%f", image[position].r);
-        image[position].g = (image[position].g * exposure);
-        printf("%f", image[position].g);
-        image[position].b = (image[position].b * exposure);
-        printf("%f", image[position].b);
-    }
+int getImageSize() {
+    return sizeX * sizeY;
 }
 
-void toneMapping(){
-printf("Applying tone mapping! \n");
-    int position;
-    for(position = 0; position < sizeX * sizeY; position++){
-        image[position].r =  ((image[position].r) / (image[position].r + tone_value));
-        image[position].g =  ((image[position].g) / (image[position].g + tone_value));
-        image[position].b =  ((image[position].b) / (image[position].b + tone_value));
-    }
+void applyExposure(RGBf pixel) {
+    pixel.r = pixel.r * exposure;
+    pixel.g = pixel.g * exposure;
+    pixel.b = pixel.b * exposure;
+}
+
+void toneMapping(RGBf pixel){
+    pixel.r = pixel.r / (pixel.r + tone_value);
+    pixel.g = pixel.g / (pixel.g + tone_value);
+    pixel.b = pixel.b / (pixel.b + tone_value);
 }
 
 
-void gammaCorrection(){
-    printf("Applying Gamma correction!\n");
-    int position;
-    for(position = 0; position < sizeX * sizeY; position++){
-        image[position].r = (fastpow(image[position].r, gamma_value));
-        image[position].g = (fastpow(image[position].g, gamma_value));
-        image[position].b = (fastpow(image[position].b, gamma_value));
-    }
+void gammaCorrection(RGBf pixel){
+    pixel.r = fastpow(pixel.r, (1 / gamma_value));
+    pixel.g = fastpow(pixel.g, (1 / gamma_value));
+    pixel.b = fastpow(pixel.b, (1 / gamma_value));
 }
 
 int min( int a, int b )
 { return (a) < (b) ? (a) : (b); }
 
-void convertImage(){
-printf("%d", modo);
-    int position;
-    for(position = 0; position < sizeX * sizeY; position++){
-        image8[position].r = (int) ((min(1.0, image[position].r)) * 255);
-        image8[position].g = (int) ((min(1.0, image[position].g)) * 255);
-        image8[position].b = (int) ((min(1.0, image[position].b)) * 255);
-    }
+int convertTo8Bits(int color){
+    if (color > 1) color = 1;
+    return (int) (min(1, color) * 255);
 }
 
 int main(int argc, char** argv)
