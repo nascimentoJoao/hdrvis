@@ -165,3 +165,44 @@
 	<string.h>
 	<ctype.h>
 
+1542404210 source:/home/nascimentojoao/Documentos/entregahdrvis/hdrvis/main.c
+	<math.h>
+	<string.h>
+	"opengl.h"
+	"rgbe.h"
+
+1542404210 /home/nascimentojoao/Documentos/entregahdrvis/hdrvis/opengl.h
+	<windows.h>
+	"gl/glut.h"
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdio.h>
+	<stdlib.h>
+
+1542404210 /home/nascimentojoao/Documentos/entregahdrvis/hdrvis/include/GL/glut.h
+	"freeglut.h"
+
+1542404210 /home/nascimentojoao/Documentos/entregahdrvis/hdrvis/include/GL/freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1542404210 /home/nascimentojoao/Documentos/entregahdrvis/hdrvis/include/GL/freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1542404210 /home/nascimentojoao/Documentos/entregahdrvis/hdrvis/include/GL/freeglut_ext.h
+
+1542404210 /home/nascimentojoao/Documentos/entregahdrvis/hdrvis/rgbe.h
+	<stdio.h>
+
+1542404596 source:/home/nascimentojoao/Documentos/entregahdrvis/hdrvis/opengl.c
+	"opengl.h"
+
+1542404210 source:/home/nascimentojoao/Documentos/entregahdrvis/hdrvis/rgbe.c
+	"rgbe.h"
+	<math.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+

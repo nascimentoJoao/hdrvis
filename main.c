@@ -19,7 +19,7 @@ RGBf* image;
 RGB8* image8;
 
 // Fator de exposição inicial
-float exposure = 1.0, gamma_value = 1.8, tone_value = 0.5;
+float exposure = 1.0, gamma_value = 1.8, tone_value = 0.7;
 
 // Modo de exibição atual
 int modo;
@@ -42,7 +42,7 @@ int min(int a, int b);
 void process()
 {
     printf("Exposure: %.3f\n", exposure);
-    float red, green, blue;
+    float red, green, blue, fRed,fBlue, fGreen;
     //
     //
     // SUBSTITUA este código pelos algoritmos a serem implementados
@@ -52,29 +52,28 @@ void process()
         green = (image[index].g * exposure);
         blue = (image[index].b * exposure);
 
-        float filterRed;
-        float filterGreen;
-        float filterBlue;
-
         if(modo == SCALE) {
-            filterRed = red / (red + tone_value);
-            filterGreen = green / (green + tone_value);
-            filterBlue = blue / (blue + tone_value);
+            fRed = red / (red + tone_value);
+            fGreen = green / (green + tone_value);
+            fBlue = blue / (blue + tone_value);
         } else {
-            filterRed = fastpow(red, (1 / gamma_value));
-            filterGreen = fastpow(green, (1 / gamma_value));
-            filterBlue = fastpow(blue, (1 / gamma_value));
+            fRed = fastpow(red, (1 / gamma_value));
+            fGreen = fastpow(green, (1 / gamma_value));
+            fBlue = fastpow(blue, (1 / gamma_value));
         }
 
-        int R8 = (int)(min(1.0,filterRed)* 255);
-        int G8 = (int) (min(1.0,filterGreen)* 255);
-        int B8 = (int)(min(1.0,filterBlue)* 255);
+        int R8 = (int)(fmin(1.0,fRed)* 255);
+        int G8 = (int) (fmin(1.0,fGreen)* 255);
+        int B8 = (int)(fmin(1.0,fBlue)* 255);
 
         image8[index].r = R8;
         image8[index].g = G8;
         image8[index].b = B8;
     }
+
     printf("RED: %f - GREEN: %f - BLUE: %f\n", red, green, blue);
+    printf("RED8: %f - GREEN8: %f - BLUE8: %f\n", fRed, fGreen, fBlue);
+
     //
     // NÃO ALTERAR A PARTIR DAQUI!!!!
     //
